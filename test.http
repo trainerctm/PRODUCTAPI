@@ -1,0 +1,8 @@
+PUT http://localhost:5100/api/products/100
+
+{
+    "Id": 1,
+    "Name":"PremiumHD",
+    "Price":44.30,
+    "Stock":99
+}
