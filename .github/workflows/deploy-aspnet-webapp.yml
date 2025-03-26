@@ -1,0 +1,39 @@
+name: Deploy ASP.NET Core Web API to Azure App Service
+
+on:
+  workflow_dispatch: # Allows the workflow to be triggered manually
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Setup .NET 9.0 SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '9.0.x'
+
+      # Restore dependencies
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      # Build the project in Release configuration
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+
+      # Publish the project to a local folder
+      - name: Publish
+        run: dotnet publish --configuration Release --output ./publish --no-build
+
+      # Deploy the published output to Azure App Service
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: courageapiwebapp
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ./publish
