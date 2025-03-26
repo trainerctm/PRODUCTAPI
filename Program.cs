@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // CORS policy allowing your Blazor app (adjust the URL as needed)
+var allowedOrigin = builder.Configuration["AllowedOrigin"];
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorClient", policy =>
     {
-        policy.WithOrigins("AllowedOrigin")
+        policy.WithOrigins(AllowedOrigin)
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
