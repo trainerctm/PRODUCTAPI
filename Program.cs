@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorClient", policy =>
     {
-        policy.WithOrigins()
+        policy.WithOrigins("https://courageapiwebapp-dpdzgabsckgkhyd2.uksouth-01.azurewebsites.net")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
