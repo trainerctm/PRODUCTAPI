@@ -6,7 +6,6 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 
 // CORS policy allowing your Blazor app (adjust the URL as needed)
 
@@ -14,7 +13,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowBlazorClient", policy =>
     {
-        policy.WithOrigins("https://courageapiwebapp-dpdzgabsckgkhyd2.uksouth-01.azurewebsites.net")
+        policy.WithOrigins("https://courageapiwebapp-dpdzgabsckgkhyd2.uksouth-01.azurewebsites.net/")
               .AllowAnyHeader()
               .AllowAnyMethod();
     });
