@@ -505,3 +505,4 @@ E:\week3\test4\ProductAPI\bin\Debug\net9.0\RestSharp.dll
 E:\week3\test4\ProductAPI\bin\Debug\net9.0\Stripe.dll
 E:\week3\test4\ProductAPI\bin\Debug\net9.0\PayPalCheckoutSdk.dll
 E:\week3\test4\ProductAPI\bin\Debug\net9.0\PayPalHttp-Dotnet.dll
+E:\week3\test4\ProductAPI\obj\Debug\net9.0\ProductAPI.sourcelink.json
