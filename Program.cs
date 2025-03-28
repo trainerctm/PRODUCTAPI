@@ -3,6 +3,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ProductApi.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ApplicationInsights.AspNetCore;
+
+using Microsoft.ApplicationInsights; // Required for TelemetryClient
+using Microsoft.ApplicationInsights.DataContracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +29,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Register IHttpClientFactory (needed for calling GitHub endpoints)
 builder.Services.AddHttpClient();
+
+// Add Application Insights and Profiler
+builder.Services.AddApplicationInsightsTelemetry();
+
 
 // Configure JWT Bearer Authentication only
 var jwtSecret = builder.Configuration["Jwt:Secret"];
