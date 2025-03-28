@@ -91,8 +91,8 @@ namespace ProductApi.Controllers
             }
         },
                 Mode = "payment",
-                SuccessUrl = "https://localhost:7090/payment-success",
-                CancelUrl = "https://localhost:7090/payment-cancel",
+                SuccessUrl = $"{_config["FeUrl"]}/payment-success",
+                CancelUrl = $"{_config["FeUrl"]}/payment-cancel",
                 ClientReferenceId = order.Id.ToString()
             };
 
@@ -231,9 +231,10 @@ namespace ProductApi.Controllers
             }
         },
                 Mode = "payment",
-                // 4) Instead of a webhook, rely on success redirect
-                SuccessUrl = $"https://localhost:7090/payment-success?method=stripeclient&orderId={order.Id}",
-                CancelUrl = "https://localhost:7090/payment-cancel?method=stripeclient"
+                // Instead of a webhook, rely on success redirect
+                SuccessUrl = $"{_config["FeUrl"]}/payment-success?method=stripeclient&orderId={order.Id}",
+                CancelUrl = $"{_config["FeUrl"]}/payment-cancel?method=stripeclient"
+
             };
 
             var service = new SessionService();
