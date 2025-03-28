@@ -33,7 +33,6 @@ builder.Services.AddHttpClient();
 builder.Services.AddApplicationInsightsTelemetry();
 builder.Services.AddServiceProfiler();
 
-
 // Configure JWT Bearer Authentication only
 var jwtSecret = builder.Configuration["Jwt:Secret"];
 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret));
