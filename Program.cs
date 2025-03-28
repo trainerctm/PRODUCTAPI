@@ -4,8 +4,7 @@ using System.Text;
 using ProductApi.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.ApplicationInsights.AspNetCore;
-
-using Microsoft.ApplicationInsights; // Required for TelemetryClient
+using Microsoft.ApplicationInsights; 
 using Microsoft.ApplicationInsights.DataContracts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +31,7 @@ builder.Services.AddHttpClient();
 
 // Add Application Insights and Profiler
 builder.Services.AddApplicationInsightsTelemetry();
+builder.Services.AddServiceProfiler();
 
 
 // Configure JWT Bearer Authentication only
